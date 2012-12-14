@@ -21,7 +21,7 @@ class BaseBackend(object):
         
     def send_messages(self, messages):
         """
-        Sends one or more Sms objects and should return the number
+        Sends one or more Message objects and should return the number
         sent.
         """
         raise NotImplementedError
