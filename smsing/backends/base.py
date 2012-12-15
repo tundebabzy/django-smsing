@@ -10,6 +10,9 @@ class BaseBackend(object):
         self.fail_silently = fail_silently
 
     def open(self):
+        """
+        Opens a connection to a backend
+        """
         pass
 
     def get_username(self):

@@ -17,7 +17,7 @@ class SimpleTest(TestCase):
 
     def test_api_get_connection(self):
         """
-        Test api.get_connection and check to see that
+        Test api.get_connection
         """
         from api import get_connection
         from backends import console
@@ -31,6 +31,9 @@ class SimpleTest(TestCase):
                             'smsing.backends.base.SmsBackend')
         
     def test_message(self):
+        """
+        Test messaging.Message and its methods
+        """
         from messaging import Message
         new_msg = Message(to=['0805'], text='Holla if console backend works')
         new_msg.send()
@@ -49,6 +52,9 @@ class SimpleTest(TestCase):
         new_msg.send()
 
     def test_api_send_message(self):
+        """
+        Tests api.semd_sms
+        """
         from api import send_sms
         text = 'Backend message'
         to = ['0703']

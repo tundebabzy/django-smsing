@@ -31,7 +31,7 @@ class Message(object):
 
     def connect(self, fail_silently=False):
         """
-        Find a backend connection to use
+        Finds a backend connection to use
         """
         if not self.connection:
             self.connection = get_connection(fail_silently=fail_silently)

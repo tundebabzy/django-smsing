@@ -1,8 +1,11 @@
 #-*- coding: utf-8 -*-
 """
-SMS backend that writes messages to console instead of sending them.
+This is basically a fake backend that just writes messages to the
+console; no SMS Centers or gateways involved.
 
-This is a total ripoff of django.core.mail.backends.console
+This is a total ripoff of django.core.mail.backends.console and inspired
+by django-sendsms.
+
 """
 import sys
 import threading
