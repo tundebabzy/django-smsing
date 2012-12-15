@@ -9,8 +9,9 @@ class Message(object):
         kannel has been configured for long messages.
         """
         if to:
-            assert not isinstance(to, basetring), 'please use a list or \
+            assert not isinstance(to, basestring), 'please use a list or \
             tuple for the `to` argument'
+            self.to = to
 
         else:
             self.to = []
@@ -25,7 +26,7 @@ class Message(object):
         if not self.to:
             # Nobody to send to so fail
             return 0
-        sent = self.get_connection(fail_silently).send_messages([self])
+        sent = self.connect(fail_silently).send_messages([self])
         return sent
 
     def connect(self, fail_silently=False):

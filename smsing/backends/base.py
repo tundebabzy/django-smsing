@@ -1,3 +1,5 @@
+from django.core.exceptions import ImproperlyConfigured
+
 class BaseBackend(object):
     """
     Base class for backend implementations.
@@ -7,13 +9,16 @@ class BaseBackend(object):
     def __init__(self, fail_silently=False, **kwargs):
         self.fail_silently = fail_silently
 
+    def open(self):
+        pass
+
     def get_username(self):
         """
         Returns username for backend authentication where applicable
         """
         pass
 
-    def get_password(self)
+    def get_password(self):
         """
         Returns username for backend authentication where applicable
         """
@@ -24,4 +29,4 @@ class BaseBackend(object):
         Sends one or more Message objects and should return the number
         sent.
         """
-        raise NotImplementedError
+        pass
