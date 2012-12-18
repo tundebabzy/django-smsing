@@ -26,10 +26,16 @@ class BaseBackend(object):
         Returns username for backend authentication where applicable
         """
         pass
+
+    def send_message(self, message):
+        """
+        Sends a single Message object and should return a boolean
+        signifying if the message was sent or not
+        """
         
     def send_messages(self, messages):
         """
         Sends one or more Message objects and should return the number
-        sent.
+        sent. This should be used for multiple messages.
         """
         pass
