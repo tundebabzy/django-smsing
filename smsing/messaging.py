@@ -8,31 +8,34 @@ class Message(object):
         `text` argument should be a maximum of 160 characters unless
         kannel has been configured for long messages.
         """
-        if to:
-            assert not isinstance(to, basestring), 'please use a list or \
-            tuple for the `to` argument'
+        if isinstance(to, list):
             self.to = to
+            
+        # if its a string that is supplied
+        elif to and isinstance(to, basestring):
+            self.to = [to]
 
+        # ...for everything else, lets not complicate things abeg.
         else:
             self.to = []
 
+        if text:
+            assert isinstance(text, basestring), 'SMS text should be be \
+            a string.'
+            
         self.text = text
         self.connection = connection
 
-    def send(self, fail_silently=False):
-        """
-        Sends an SMS
-        """
-        if not self.to:
-            # Nobody to send to so fail
-            return 0
-        sent = self.connect(fail_silently).send_messages([self])
-        return sent
+    def get_text(self):
+        if self.text:
+            return self.text
+        else:
+            print 'Empty message.'
+            return 
 
-    def connect(self, fail_silently=False):
-        """
-        Finds a backend connection to use
-        """
-        if not self.connection:
-            self.connection = get_connection(fail_silently=fail_silently)
-        return self.connection
+    def get_to(self):
+        if self.to:
+            return self.to
+        else:
+            print 'No number supplied.'
+            return
