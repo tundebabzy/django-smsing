@@ -30,12 +30,27 @@ class Message(object):
         if self.text:
             return self.text
         else:
-            print 'Empty message.'
-            return 
+            return 'Empty message.'
+
+    def set_text(self, value):
+        self.text = value
+
+    def del_text(self):
+        del self.text
+
+    message = property(get_text, set_text, del_text)
+            
 
     def get_to(self):
         if self.to:
             return self.to
         else:
-            print 'No number supplied.'
-            return
+            return 'No number supplied.'
+
+    def set_to(self, value):
+        self.to = value
+
+    def del_to(self):
+        del self.to
+
+    destination = property(get_to, set_to, del_to)
