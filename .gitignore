@@ -1,3 +1,7 @@
 *.pyc
 *~
+build/
+dist/
+*.egg
+django_smsing.egg-info/
 smsing/tests.py
