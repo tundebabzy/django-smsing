@@ -27,15 +27,10 @@ class BaseBackend(object):
         """
         pass
 
-    def send_message(self, message):
-        """
-        Sends a single Message object and should return a boolean
-        signifying if the message was sent or not
-        """
-        
     def send_messages(self, messages):
         """
         Sends one or more Message objects and should return the number
-        sent. This should be used for multiple messages.
+        sent. This should be used for multiple messages. Custom
+        backends must at least over write this method.
         """
         pass
