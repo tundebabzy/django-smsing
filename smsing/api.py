@@ -47,7 +47,7 @@ def send_sms(text, to, fail_silently=False,
     from smsing.messaging import Message
     connection = _connection(fail_silently, username, password, connection)
     message = Message(text=text, to=to)
-    connection.send_messages(message)
+    return connection.send_messages(message)
 
 def send_bulk_sms(datatuple, fail_silently=False,
              username=None, password=None, connection=None):
@@ -62,7 +62,12 @@ def send_bulk_sms(datatuple, fail_silently=False,
     """
 
     from smsing.messaging import Message
+    from smsing.utils import is_valid_number
     connection = _connection(fail_silently, username, password, connection)
+    
+    # Check datatuple for messages supplied with acceptable destination
+    # numbers are queue *only* those for sending
     messages = [Message(text=text, to=to)
-                for to, text in datatuple]
-    connection.send_messages(messages)
+                for to, text in datatuple if is_valid_number(to)]
+                
+    return connection.send_messages(messages)
