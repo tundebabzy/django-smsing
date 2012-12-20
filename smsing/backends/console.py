@@ -22,7 +22,7 @@ class SmsBackend(BaseBackend):
     def send_messages(self, messages):
         """Write all messages to the stream in a thread-safe way."""
         if not messages:
-            return
+            return 0
         self._lock.acquire()
 
         # For a single Message object
